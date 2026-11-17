@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- This line makes the page fit a phone screen. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find the right tree | Rooted Together</title>
+  <meta name="description" content="The kind of tree Rooted Together plants in each kind of spot, and why. Sample site for demonstration.">
+
+  <!-- Nunito Sans from Google Fonts. If there is no internet, the page uses a normal system font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Lets keyboard users jump past the menu. Hidden until focused. -->
+  <a class="skip-link" href="#main">Skip to the main part of the page</a>
+
+  <!-- app.js puts the top bar and menu here. They are the same on every page. -->
+  <div class="site-top" id="site-top"></div>
+
+  <!-- ===== PAGE TITLE ===== -->
+  <header class="hero hero-small">
+    <div class="wrap">
+      <h1>Find the right tree</h1>
+      <!-- app.js replaces this line with the "intro" words in data.js. -->
+      <p class="lead" id="guide-intro">Every tree we plant is chosen for its exact spot.</p>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+
+    <!-- ===== WHICH TREE FITS WHICH SPOT ===== -->
+    <section id="spots">
+      <h2>Which tree fits your spot?</h2>
+      <div class="card">
+        <!-- app.js fills in the rows from the "treeGuide" part of data.js.
+             On a phone each row is shown as its own block, so nothing is squeezed.
+             The "role" words tell screen readers it is still a table. -->
+        <table class="guide-table" id="guide-table" role="table">
+          <caption>The size of tree we plant in each kind of spot</caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Kind of spot</th>
+              <th scope="col" role="columnheader">Tree size we plant</th>
+              <th scope="col" role="columnheader">Example trees</th>
+              <th scope="col" role="columnheader">Why</th>
+            </tr>
+          </thead>
+          <tbody id="guide-rows" role="rowgroup"></tbody>
+        </table>
+
+        <!-- app.js puts a short note here, then the "Source" line with the link to the City's list. -->
+        <p class="guide-note" id="guide-note"></p>
+        <p class="guide-source last-line" id="guide-source"></p>
+      </div>
+    </section>
+
+    <!-- ===== WHAT WE AVOID ===== -->
+    <section id="avoid">
+      <h2>What we avoid, and why</h2>
+      <div class="card">
+        <!-- app.js fills this list from data.js. -->
+        <ul class="item-list plain-list" id="avoid-list"></ul>
+      </div>
+    </section>
+
+    <!-- ===== WHO CARES FOR THE TREE ===== -->
+    <section id="care">
+      <h2>We care for the tree</h2>
+      <!-- app.js puts the "closing" words from data.js here. -->
+      <p class="lead" id="guide-closing"></p>
+    </section>
+
+  </main>
+
+  <!-- app.js puts the mailing list card here. It is the same on every page. -->
+  <div id="site-bottom"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <p class="sample-note">
+        <strong>Sample data for demonstration.</strong>
+        This is a student prototype. PUFN is a made-up name. The names, phone
+        numbers, dates and tree counts on this site are not real.
+      </p>
+    </div>
+  </footer>
+
+  <!-- The content first, then the code that puts it on the page. Keep this order. -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

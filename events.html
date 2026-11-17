@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- This line makes the page fit a phone screen. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events | Rooted Together</title>
+  <meta name="description" content="Clean-up days, planting days and cookouts from Rooted Together. Sample site for demonstration.">
+
+  <!-- Nunito Sans from Google Fonts. If there is no internet, the page uses a normal system font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Lets keyboard users jump past the menu. Hidden until focused. -->
+  <a class="skip-link" href="#main">Skip to the main part of the page</a>
+
+  <!-- app.js puts the top bar and menu here. They are the same on every page. -->
+  <div class="site-top" id="site-top"></div>
+
+  <!-- ===== PAGE TITLE ===== -->
+  <header class="hero hero-small">
+    <div class="wrap">
+      <h1>Events</h1>
+      <p class="lead">Clean-up days, planting days and cookouts. Everyone is welcome.</p>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+
+    <!-- ===== CHOOSE YOUR NEIGHBORHOOD =====
+         A first-time visitor sees the buttons. After a choice, this folds into one line:
+         "Showing: Homewood South" and a Change button. -->
+    <section id="choose" class="choose-compact is-open">
+      <h2 class="choose-title">Choose your neighborhood</h2>
+      <!-- app.js makes one button for each neighborhood in data.js. -->
+      <div class="choices" id="neighborhood-buttons"></div>
+      <p class="showing-line">
+        <!-- Says which neighborhood is showing. Screen readers read it out when it changes. -->
+        <span id="showing" aria-live="polite"></span>
+        <button class="change-button" id="change-button" type="button" aria-expanded="true" aria-controls="neighborhood-buttons">Change</button>
+      </p>
+    </section>
+
+    <!-- ===== EVENTS ===== -->
+    <section id="events">
+      <h2>Upcoming events</h2>
+      <!-- app.js lists the upcoming events here. -->
+      <div class="event-cards" id="event-list"></div>
+    </section>
+
+  </main>
+
+  <!-- app.js puts the mailing list card here. It is the same on every page. -->
+  <div id="site-bottom"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <p class="sample-note">
+        <strong>Sample data for demonstration.</strong>
+        This is a student prototype. PUFN is a made-up name. The names, phone
+        numbers, dates and tree counts on this site are not real.
+      </p>
+    </div>
+  </footer>
+
+  <!-- The content first, then the code that puts it on the page. Keep this order. -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

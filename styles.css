@@ -1,0 +1,960 @@
+/* =========================================================
+   Rooted Together - styles
+   Written for phones first. Laptop changes come at the end.
+   ========================================================= */
+
+/* ---- Colours and sizes used everywhere. Change them here. ---- */
+:root {
+  --green: #378253;        /* main colour: headings, buttons, bars */
+  --green-dark: #2c6943;   /* button when pressed or hovered */
+  --pale-green: #EEF7F0;   /* card background */
+  --text: #3B423E;         /* dark grey body text */
+  --white: #ffffff;
+  --radius: 16px;          /* how round the card corners are */
+  --font: "Nunito Sans", "Segoe UI", Arial, sans-serif;
+}
+
+/* ---- Basics ---- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Some people turn off moving effects on their device. Respect that choice. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.125rem;     /* 18px: large enough to read easily */
+  line-height: 1.6;
+}
+
+/* Keeps content away from the screen edges and stops it getting too wide. */
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+/* ---- Headings ---- */
+h1,
+h2 {
+  color: var(--green);
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+/* ---- Top bar ---- */
+/* The top bar is built by app.js and is the same on every page. */
+.topbar {
+  padding: 10px 0;
+}
+
+/* PUFN on the left, the Menu button on the right. */
+.topbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 16px;
+}
+
+/* The PUFN name. It is a link to the home page. */
+.org {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+/* ---- Menu ---- */
+/* On phones, the Menu button opens and closes the list of pages. */
+.menu-button {
+  min-height: 48px;
+  padding: 8px 22px;
+  border: 2px solid var(--green);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* The list of pages. Hidden on phones until the Menu button is tapped. */
+.site-menu {
+  display: none;
+  flex-basis: 100%;        /* the list takes a full line under the top bar */
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.site-menu.is-open {
+  display: flex;
+}
+
+.site-menu a {
+  padding: 12px 4px;
+  border-top: 2px solid var(--pale-green);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* The page you are on is green and underlined. */
+.site-menu a[aria-current="page"] {
+  color: var(--green);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+/* ---- Top of page ---- */
+/* A pale green band across the top of the page. */
+.hero {
+  padding: 32px 0 36px;
+  background: var(--pale-green);
+}
+
+/* The shorter band at the top of every page except the home page. */
+.hero-small {
+  padding: 28px 0;
+}
+
+.hero-small .lead {
+  margin-bottom: 0;
+}
+
+/* ---- Home page: large links to the other pages ---- */
+/* On a phone the links are two small tiles per row, showing the page name only. */
+.page-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card.page-link {
+  padding: 16px;
+}
+
+.card.page-link {
+  display: block;
+  margin: 0;
+  border: 2px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.card.page-link:hover {
+  border-color: var(--green);
+}
+
+.page-link-name {
+  display: block;
+  color: var(--green);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-decoration: underline;
+}
+
+/* The one-line description is hidden on phones to keep the page short. */
+.page-link-about {
+  display: none;
+}
+
+/* ---- "Take part" cards: suggest a spot, report a tree ---- */
+.action-cards {
+  display: grid;
+  gap: 12px;
+}
+
+.card.action-card {
+  margin: 0;
+}
+
+/* ---- Neighborhood buttons folded into one line (every page except the home page) ---- */
+.choose-compact {
+  padding-top: 24px;
+}
+
+/* "Showing: Homewood South" with the Change button beside it. */
+.showing-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.change-button {
+  min-height: 44px;
+  padding: 6px 20px;
+  border: 2px solid var(--green);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Folded: hide the heading and the neighborhood buttons. */
+.choose-compact:not(.is-open) .choose-title,
+.choose-compact:not(.is-open) .choices {
+  display: none;
+}
+
+/* Open: the Change button is not needed, and the line sits under the buttons. */
+.choose-compact.is-open .change-button {
+  display: none;
+}
+
+.choose-compact.is-open .showing-line {
+  margin-top: 14px;
+}
+
+/* ---- Side-by-side table on the Tree progress page ---- */
+.compare-card {
+  margin-top: 16px;
+}
+
+/* Narrower gaps so three columns fit on a small phone. On the very smallest
+   screens a long neighborhood name may break onto a second line. */
+.compare-card th,
+.compare-card td {
+  padding: 10px 4px;
+  overflow-wrap: anywhere;
+}
+
+/* A plain underlined link, such as "See all events". */
+.text-link {
+  display: inline-block;
+  padding: 10px 0;         /* tall enough to tap easily */
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+/* ---- About page ---- */
+.about-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.about-cards .card {
+  margin: 0;
+}
+
+/* The "About me" card has a white background and a green outline to set it apart. */
+.card.about-me {
+  border: 2px solid var(--green);
+  background: var(--white);
+}
+
+/* The last line in a card needs no space under it. */
+.last-line {
+  margin-bottom: 0;
+}
+
+/* ---- "How it works" steps ---- */
+.steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;     /* start counting the steps from 1 */
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 44px 1fr;   /* the number, then the words */
+  gap: 14px;
+  align-items: start;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--pale-green);
+  counter-increment: step;
+}
+
+/* The step number in a green circle. */
+.step::before {
+  content: counter(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.step p {
+  margin: 0;
+}
+
+.step-title {
+  font-weight: 800;
+}
+
+.org-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--green);
+}
+
+.lead {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+}
+
+/* ---- Button ---- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;             /* full width on a phone: easy to tap */
+  min-height: 56px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--green-dark);
+}
+
+/* A clear outline when someone moves around with the keyboard. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* ---- Sections ---- */
+section {
+  padding: 36px 0 8px;
+  scroll-margin-top: 16px;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--pale-green);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* Temporary boxes that show where content will go. */
+.placeholder {
+  border: 2px dashed var(--green);
+}
+
+/* The mailing list card is solid green so it stands out from the pale cards. */
+.signup-card {
+  padding: 28px 20px;
+  background: var(--green);
+  color: var(--white);
+}
+
+.signup-card h2 {
+  color: var(--white);
+}
+
+/* ---- Neighborhood buttons ---- */
+.choices {
+  display: flex;
+  flex-direction: column;   /* one button per line on a phone */
+  gap: 10px;
+}
+
+.choice {
+  min-height: 52px;
+  padding: 10px 20px;
+  border: 2px solid var(--green);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--text);
+  font: inherit;            /* buttons do not use the page font unless told to */
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* The chosen button is filled green. The "Showing:" line under the buttons also names it. */
+.choice[aria-pressed="true"] {
+  background: var(--green);
+  color: var(--white);
+}
+
+.showing {
+  margin: 14px 0 0;
+  font-weight: 700;
+}
+
+/* ---- Headline numbers ---- */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* two cards side by side on a phone */
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat {
+  margin: 0;
+  padding: 16px;
+}
+
+/* The third card stretches across both columns on a phone. */
+.stat-wide {
+  grid-column: 1 / -1;
+}
+
+.stat-number {
+  margin: 0;
+  color: var(--green);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.stat-label {
+  margin: 4px 0 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* ---- Small headings inside cards ---- */
+h3,
+.small-title {
+  margin: 0 0 8px;
+  color: var(--green);
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.chart-year {
+  margin-top: 20px;
+}
+
+.chart-year-name {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.bar-row {
+  margin-bottom: 8px;
+}
+
+.bar-label {
+  display: block;
+  font-weight: 700;
+}
+
+/* The bar and its number sit side by side. */
+.bar-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --size comes from app.js (0 to 1). The 3.5rem leaves room for the number. */
+.bar {
+  width: calc((100% - 3.5rem) * var(--size));
+  min-width: 4px;
+  height: 24px;
+  border-radius: 0 6px 6px 0;
+}
+
+.bar-planted {
+  background: var(--white);
+  border: 2px solid var(--green);
+}
+
+.bar-alive {
+  background: var(--green);
+}
+
+.bar-value {
+  font-weight: 800;
+}
+
+/* ---- Table under the chart ---- */
+.table-toggle {
+  margin-top: 20px;
+}
+
+.table-toggle summary {
+  padding: 12px 0;         /* tall enough to tap easily */
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  padding: 8px 0;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--text);
+  text-align: left;
+}
+
+/* Numbers line up on the right so they are easy to compare. */
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.total-row th,
+.total-row td {
+  border-bottom: none;
+  font-weight: 800;
+}
+
+/* ---- Table on the "Find the right tree" page ---- */
+.guide-table th,
+.guide-table td {
+  vertical-align: top;
+}
+
+/* The short note and the "Source" line under the table. */
+.guide-note {
+  margin: 16px 0 8px;
+  font-weight: 700;
+}
+
+.guide-source a {
+  color: var(--text);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* The first item in a list like "What we avoid" needs no line above it. */
+.plain-list .item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* A phone has no room for four columns. So each row becomes its own block:
+   the kind of spot as a small heading, then "Tree size we plant: Small", and so on.
+   The column names come from the top row, which is hidden from view on a phone. */
+@media (max-width: 639px) {
+  .guide-table,
+  .guide-table caption,
+  .guide-table tbody,
+  .guide-table tbody tr,
+  .guide-table tbody th,
+  .guide-table tbody td {
+    display: block;
+  }
+
+  /* Hidden from view, but screen readers can still read it. */
+  .guide-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .guide-table tbody tr {
+    padding: 14px 0;
+    border-top: 2px solid var(--white);
+  }
+
+  .guide-table tbody th,
+  .guide-table tbody td {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .guide-table tbody th {
+    margin-bottom: 4px;
+    color: var(--green);
+    font-size: 1.375rem;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  /* Puts the column name in front, for example "Why: ". */
+  .guide-table tbody td::before {
+    content: attr(data-label) ": ";
+    font-weight: 800;
+  }
+}
+
+/* ---- Lists of crew visits and events ---- */
+.item-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;        /* no bullet points */
+}
+
+.item {
+  padding: 14px 0;
+  border-top: 2px solid var(--white);   /* a line between one item and the next */
+}
+
+.item:last-child {
+  padding-bottom: 0;
+}
+
+.item p {
+  margin: 0;
+}
+
+.item-date {
+  font-weight: 800;
+}
+
+.item-main {
+  font-weight: 700;
+}
+
+/* A crew visit or event: the green date box on the left, the words on the right. */
+.item-dated {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+/* The green date box, for example "MAY 7". */
+.date-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  border-radius: 12px;
+  background: var(--green);
+  color: var(--white);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.date-month {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.date-day {
+  font-size: 1.625rem;
+}
+
+/* ---- Phone link in a contact ---- */
+.call-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;        /* tall enough to tap easily */
+  margin-top: 10px;
+  padding: 8px 22px;
+  border: 2px solid var(--green);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.call-link:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+/* Words that should stay on one line, such as a neighborhood name. */
+.keep-together {
+  white-space: nowrap;
+}
+
+/* Message shown if data.js has a typing mistake. */
+.data-error {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border: 3px solid #a12a2a;
+  border-radius: var(--radius);
+  font-weight: 700;
+}
+
+/* On the green card the button is white with green words. */
+.signup-card .button {
+  margin-top: 8px;
+  background: var(--white);
+  color: var(--green);
+}
+
+.signup-card .button:hover {
+  background: var(--pale-green);
+}
+
+/* On the green card, a white outline is easier to see than a dark one. */
+.signup-card .button:focus-visible {
+  outline-color: var(--white);
+}
+
+/* ---- Footer ---- */
+.footer {
+  margin-top: 40px;
+  padding: 28px 0 40px;
+  border-top: 4px solid var(--pale-green);
+}
+
+.sample-note {
+  margin: 0;
+  padding: 16px 20px;
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+}
+
+/* ---- Skip link: hidden until a keyboard user tabs to it ---- */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -80px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--text);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* =========================================================
+   Wider screens (tablets and laptops)
+   ========================================================= */
+@media (min-width: 640px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .button {
+    width: auto;           /* button only as wide as its words */
+  }
+
+  .card {
+    padding: 28px;
+  }
+
+  /* Home page links: there is room for the one-line description now. */
+  .card.page-link {
+    padding: 20px;
+  }
+
+  .page-link-about {
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* "Take part" cards sit side by side. */
+  .action-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Neighborhood buttons sit in one row. */
+  .choices {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /* Chart: the label sits to the left of its bar instead of above it. */
+  .bar-row {
+    display: grid;
+    grid-template-columns: 7em 1fr;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+/* Three headline numbers in one row, once there is room for them. */
+@media (min-width: 760px) {
+  .stats {
+    grid-template-columns: 1fr 1fr 1.4fr;   /* third card is wider: "9 out of 10" is longer */
+    gap: 16px;
+  }
+
+  .stat-number {
+    white-space: nowrap;   /* keep each number on one line */
+  }
+
+  .stat {
+    padding: 20px;
+  }
+
+  .stat-wide {
+    grid-column: auto;
+  }
+}
+
+/* =========================================================
+   Laptops and other wide screens
+   ========================================================= */
+@media (min-width: 960px) {
+  /* The page can use more of the screen. */
+  .wrap {
+    max-width: 1040px;
+  }
+
+  /* Top bar: PUFN on the left, the pages on the right. It stays in view while you scroll. */
+  .site-top {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--white);
+    border-bottom: 2px solid var(--pale-green);
+  }
+
+  .topbar {
+    padding: 6px 0;
+  }
+
+  .topbar-inner {
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+
+  /* No Menu button on a laptop: the pages are always shown in a row. */
+  .menu-button {
+    display: none;
+  }
+
+  .site-menu,
+  .site-menu.is-open {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    gap: 20px;             /* seven page names fit in one row */
+    margin-top: 0;
+  }
+
+  .site-menu a {
+    padding: 10px 2px;
+    border-top: none;
+    white-space: nowrap;   /* keep each page name on one line */
+  }
+
+  .site-menu a:hover {
+    text-decoration: underline;
+  }
+
+  /* Home page: three links in a row. */
+  .page-links {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* About page: two cards in a row. The "About me" card takes a full row. */
+  .about-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-me {
+    grid-column: 1 / -1;
+  }
+
+  .hero {
+    padding: 48px 0;
+  }
+
+  /* The three steps sit side by side. */
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .lead {
+    max-width: 34em;       /* keeps the intro to a comfortable line length */
+  }
+
+  /* Tree progress: numbers stacked on the left, chart on the right. */
+  .progress-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .progress-layout .stats {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+  }
+
+  /* Crew schedule and contacts: cards side by side. */
+  .month-cards,
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    align-items: start;
+  }
+
+  .month-cards .card,
+  .contact-cards .card {
+    margin-bottom: 0;
+  }
+
+  /* Events: the events inside each card sit in columns. */
+  .event-cards .item-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    column-gap: 32px;
+  }
+}

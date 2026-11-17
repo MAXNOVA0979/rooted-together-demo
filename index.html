@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- This line makes the page fit a phone screen. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rooted Together | PUFN</title>
+  <meta name="description" content="Rooted Together: tree planting and tree care in your neighborhood. Sample site for demonstration.">
+
+  <!-- Nunito Sans from Google Fonts. If there is no internet, the page uses a normal system font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Lets keyboard users jump past the menu. Hidden until focused. -->
+  <a class="skip-link" href="#main">Skip to the main part of the page</a>
+
+  <!-- app.js puts the top bar and menu here. They are the same on every page. -->
+  <div class="site-top" id="site-top"></div>
+
+  <!-- ===== HOME PAGE: TOP ===== -->
+  <header class="hero">
+    <div class="wrap">
+      <h1>Rooted Together</h1>
+      <!-- app.js replaces this line with the tagline in data.js. -->
+      <p class="lead" id="tagline">More trees, and better care for them, in your neighborhood.</p>
+      <a class="button js-signup" href="https://example.com/replace-with-google-form">
+        Join the mailing list
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+
+    <!-- ===== LINKS TO THE OTHER PAGES ===== -->
+    <section>
+      <h2>Find what you need</h2>
+      <!-- app.js makes one large link for each page. -->
+      <div class="page-links" id="page-links"></div>
+    </section>
+
+    <!-- ===== TAKE PART ===== -->
+    <section id="take-part">
+      <h2>Take part</h2>
+      <!-- app.js makes these cards from the "actions" list in data.js. -->
+      <div class="action-cards" id="actions"></div>
+    </section>
+
+    <!-- ===== CHOOSE YOUR NEIGHBORHOOD =====
+         The choice is remembered on the other pages. -->
+    <section id="choose">
+      <h2>Which neighborhood are you in?</h2>
+      <!-- app.js makes one button for each neighborhood in data.js. -->
+      <div class="choices" id="neighborhood-buttons"></div>
+      <!-- Says which neighborhood is showing. Screen readers read it out when it changes. -->
+      <p class="showing" id="showing" aria-live="polite"></p>
+    </section>
+
+    <!-- ===== OUR TREES SO FAR ===== -->
+    <section>
+      <h2>Our trees so far</h2>
+      <!-- app.js fills this box with the three headline numbers. -->
+      <div class="stats" id="stats"></div>
+      <a class="text-link" href="progress.html">See tree progress year by year</a>
+    </section>
+
+    <!-- ===== NEXT EVENT ===== -->
+    <section>
+      <h2>Join us</h2>
+      <!-- app.js shows the soonest event here. -->
+      <div class="event-cards" id="next-event"></div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section>
+      <h2>How it works</h2>
+      <!-- app.js fills this list with the steps in data.js. -->
+      <ol class="steps" id="steps"></ol>
+    </section>
+
+  </main>
+
+  <!-- app.js puts the mailing list card here. It is the same on every page. -->
+  <div id="site-bottom"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <p class="sample-note">
+        <strong>Sample data for demonstration.</strong>
+        This is a student prototype. PUFN is a made-up name. The names, phone
+        numbers, dates and tree counts on this site are not real.
+      </p>
+    </div>
+  </footer>
+
+  <!-- The content first, then the code that puts it on the page. Keep this order. -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
